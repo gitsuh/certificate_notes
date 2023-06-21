@@ -23,6 +23,7 @@ I am too dumb to remember.
 > private key: sample_private_pkcs8.key
 
 ---
+
 x509
 PEM
 DER
@@ -36,15 +37,22 @@ PKCS8
 ***PKI File Types***
 
 *.cer – typically a PEM formatted Base64, ASCII certificate
+
 *.crt – typically a PEM formatted Base64, ASCII certificate
+
 *.der – binary form of a certificate
+
 *.pem – typically a PEM formatted Base64, ASCII certificate
+
 PKCS#7 – also known as P7B – a Base64, ASCII file that contains certificates and Intermediate CA certificates, does not include private keys
+
 PKCS#8 – a Base64, ASCII file that contains a private key
+
 PKCS#12 – also known as PFX – a binary format for storing the server certificate, intermediate certificate and private key in one file. Typically used on MS Windows to import \ export certificates and private keys.
 
 
 ---
+
 ***Convert x509 to PEM***
 `#openssl x509 -in certificatename.cer -outform PEM -out certificatename.pem`
 
@@ -103,16 +111,18 @@ STEP 1: Convert P7B to CER
 STEP 2: Convert CER and Private Key to PFX
 `openssl pkcs12 -export -in certificatename.cer -inkey privateKey.key -out certificatename.pfx -certfile  cacert.cer`
 
+
+
  ---
 
  
 
-Inspect a Certificate Signing Request
+>Inspect a Certificate Signing Request
 
 `openssl req -text -noout -verify -in my-csr.csr`
 
-Inspect a Certificate
+>Inspect a Certificate
 
 `openssl x509 -in certificate.crt -text -noout`
 
-Note: Removing -in will allow you to past the Base 64 text from the console. 
+>Note: Removing -in will allow you to past the Base 64 text from the console. 
